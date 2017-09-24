@@ -146,15 +146,4 @@ def softmax(x):
     x = x * 10
     return np.exp(x) / np.sum(np.exp(x), axis = 0)
 
-"""
-for name, obj in inspect.getmembers(read_data_sets):
-    print name
-
-    if name == '_op_def_lib':#'_placeholder':
-        print type(obj)
-        print inspect.getsource(obj)
-#    print obj
-    #inspect.isclass)
-"""
-
 
