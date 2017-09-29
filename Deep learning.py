@@ -208,5 +208,18 @@ def train_neural_network(x):
         print('Accuracy:', accuracy.eval({x:mnist.test.images, y:mnist.test.labels}))
         
 
-
+def print_epoch_stats(epoch_i, sess, last_features, last_labels):
+    """
+    Print cost and validation accuracy of an epoch
+    """
+    current_cost = sess.run(
+        cost,
+        feed_dict={features: last_features, labels: last_labels})
+    valid_accuracy = sess.run(
+        accuracy,
+        feed_dict={features: valid_features, labels: valid_labels})
+    print('Epoch: {:<4} - Cost: {:<8.3} Valid Accuracy: {:<5.3}'.format(
+        epoch_i,
+        current_cost,
+        valid_accuracy))
 
