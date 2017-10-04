@@ -114,8 +114,6 @@ class Data(object):
           end = self._index_in_epoch
           return self._images[start:end], self._labels[start:end]
         
-
-
 def _placeholder(dtype, shape=None, name=None):
    r"""A placeholder op for a value that will be fed into the computation.
 
@@ -138,7 +136,6 @@ def _placeholder(dtype, shape=None, name=None):
                                 name=name)
    return result
 
-
 def stepFunction(t):
     """
     perceptronStep helper function. takes a logit as input
@@ -153,7 +150,6 @@ def prediction(X, W, b):
     bias as input
     """
     return stepFunction((np.matmul(X,W)+b)[0])
-
 
 def perceptronStep(X, y, W, b, learn_rate = 0.01):
     """
@@ -176,7 +172,6 @@ def perceptronStep(X, y, W, b, learn_rate = 0.01):
             b -= learn_rate
     return W, b
     
-
 def trainPerceptronAlgorithm(X, y, learn_rate = 0.01, num_epochs = 25):
     """
     runs perceptronStep repeatedly on a dataset. returns a few boundary
@@ -192,7 +187,6 @@ def trainPerceptronAlgorithm(X, y, learn_rate = 0.01, num_epochs = 25):
         W, b = perceptronStep(X, y, W, b, learn_rate)
         boundary_lines.append((-W[0]/W[1], -b/W[1]))
     return boundary_lines
-
 
 def softmax(logit_list):
     """
@@ -226,8 +220,6 @@ def sigmoid_prime(x):
     """
     return sigmoid(x)*(1-sigmoid(x))
 
-
-
 keep_rate = 0.8
 
 def conv2d(x, W):
@@ -238,6 +230,9 @@ def maxpool2d(x):           #size of window
                           padding='SAME')
 
 def convolutional_neural_network(x):
+    """
+    basic convolutional neural network setup
+    """
 
     weights = {'W_conv1': tf.Variable(tf.random_normal([5,5,1,32])),
                'W_conv2': tf.Variable(tf.random_normal([5,5,32,64])),
