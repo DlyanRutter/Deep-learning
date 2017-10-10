@@ -89,6 +89,9 @@ def sigmoid_prime(x):
     """
     return sigmoid(x)*(1-sigmoid(x))
 
+def squared_error(output, target):
+    return .5*(target-output)**2
+
 def feed_forward(inputs, weights, biases):
     """
     performs a neural network feedforward operation.
