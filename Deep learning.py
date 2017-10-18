@@ -95,9 +95,9 @@ def squared_error(output, target):
     """
     return .5*(target-output)**2
 
-def feed_forward(inputs, weights, biases):
+def feed_forward(inputs, weights, biases, target):
     """
-    performs a neural network feedforward operation.
+    performs a neural network feedforward operation with manual input of weights
     from neural network strucutre:
     (input1)----(weight1)----(hidden1)-------(weight5)------(output1)
         =                     =    =                          =
@@ -111,11 +111,17 @@ def feed_forward(inputs, weights, biases):
             (bias1)                       (bias2)
               
     inputs is a np array of inputs structured (input1 input2), weights is
-    an np array of weights structured
-    (weight1  weight2
-     weight3  weight4)
-    biases is a np array of biases structured (bias1 bias2)
-    with each entry corresponding to the bias of a hidden layer.
+    a list of np arrays of weights structured:
+    [[(weight1  weight2
+     weight3  weight4)],...]
+    biases is a list of np arrays of biases structured (bias1 bias2)
+    with each entry corresponding to the bias of a hidden layer. target is a 
+    np array of target outputs with same shape as input
     """
-    pass
-
+    while i < len(weights):
+       net = np.dot(inputs, weights[i]) + biases[i]
+       out = sigmoid(net_h1)
+       inputs = out
+    
+    error = squared_error(out, target)
+    return out
